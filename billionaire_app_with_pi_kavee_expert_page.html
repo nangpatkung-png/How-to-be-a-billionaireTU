@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOW TO BE A BILLIONAIRE - ภารกิจเศรษฐีรายวัน</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Sarabun & Prompt -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f172a',
+                            900: '#0b1325',
+                            950: '#050914',
+                        },
+                        gold: {
+                            300: '#fef08a',
+                            400: '#facc15',
+                            500: '#e5c158',
+                            600: '#d4af37',
+                            700: '#a17f1a',
+                        }
+                    },
+                    fontFamily: {
+                        prompt: ['Prompt', 'sans-serif'],
+                        sarabun: ['Sarabun', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background-color: #050914;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .gold-text {
+            background: linear-gradient(135deg, #FFF099 0%, #D4AF37 50%, #9A7B1C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-card-gold {
+            background: rgba(212, 175, 55, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .phone-shadow {
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.15), 0 20px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.02); }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-navy-900 to-navy-950 p-2 sm:p-6">
+
+    <!-- Top Web App Bar / Banner -->
+    <header class="w-full max-w-5xl mx-auto text-center mb-4 sm:mb-6 pt-2">
+        <div class="inline-flex items-center gap-2 bg-navy-900/80 px-4 py-1.5 rounded-full border border-gold-600/40 text-xs sm:text-sm mb-2 text-gold-400">
+            <i class="fa-solid fa-compass fa-spin text-gold-500" style="animation-duration: 10s;"></i>
+            <span>HOW TO BE A BILLIONAIRE</span>
+        </div>
+        <h1 class="text-2xl sm:text-4xl font-bold gold-text tracking-wide mb-1">
+            ภารกิจเศรษฐีรายวัน
+        </h1>
+        <p class="text-slate-400 text-xs sm:text-sm mb-3">พิชิตภารกิจทุกวันเพื่ออัปสกิล ยกระดับ Mindset และรับรางวัล</p>
+        
+        <!-- Top Quick Navigation -->
+        <div class="flex flex-wrap justify-center gap-1.5 max-w-3xl mx-auto">
+            <button onclick="switchTab(1)" class="top-nav-btn text-[11px] px-2.5 py-1 rounded-full bg-navy-900 border border-slate-800 text-slate-300 hover:border-gold-500/50 transition">1. หน้าแรก</button>
+            <button onclick="switchTab(7)" class="top-nav-btn text-[11px] px-2.5 py-1 rounded-full bg-navy-900 border border-slate-800 text-slate-300 hover:border-gold-500/50 transition">2. เข้าสู่ระบบ</button>
+            <button onclick="switchTab(2)" class="top-nav-btn text-[11px] px-2.5 py-1 rounded-full bg-navy-900 border border-slate-800 text-slate-300 hover:border-gold-500/50 transition">3. แผงควบคุม</button>
+            <button onclick="switchTab(3)" class="top-nav-btn text-[11px] px-2.5 py-1 rounded-full bg-navy-900 border border-slate-800 text-slate-300 hover:border-gold-500/50 transition">4. เควสรายวัน</button>
+            <button onclick="switchTab(4)" class="top-nav-btn text-[11px] px-2.5 py-1 rounded-full bg-navy-900 border border-slate-800 text-slate-300 hover:border-gold-500/50 transition">5. จำลองพอร์ต</button>
+            <button onclick="switchTab(8)" class="top-nav-btn text-[11px] px-2.5 py-1 rounded-full bg-amber-500/20 border border-amber-500/50 text-amber-300 font-bold transition">6. คอร์สอบรม</button>
+            <button onclick="switchTab(9)" class="top-nav-btn text-[11px] px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 font-bold transition">7. พี่กวี ชูกิจเกษม</button>
+            <button onclick="switchTab(5)" class="top-nav-btn text-[11px] px-2.5 py-1 rounded-full bg-navy-900 border border-slate-800 text-slate-300 hover:border-gold-500/50 transition">8. พันธมิตร</button>
+            <button onclick="switchTab(6)" class="top-nav-btn text-[11px] px-2.5 py-1 rounded-full bg-gold-500/20 border border-gold-500/60 text-gold-300 font-bold hover:bg-gold-500 hover:text-navy-950 transition flex items-center gap-1">
+                <i class="fa-solid fa-dice text-xs"></i>
+                <span>9. เกม ธปท.</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Mobile Device Container -->
+    <main class="relative w-full max-w-[410px] h-[820px] bg-navy-950 rounded-[48px] p-3 sm:p-4 border-[6px] border-slate-800/90 phone-shadow flex flex-col justify-between overflow-hidden relative border-t-slate-700/80">
+        
+        <!-- Phone Speaker & Notch -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-36 h-6 bg-slate-900 rounded-b-2xl z-50 flex items-center justify-center gap-2 border-b border-x border-slate-800/60">
+            <div class="w-12 h-1.5 bg-slate-700 rounded-full"></div>
+            <div class="w-2.5 h-2.5 bg-slate-800 rounded-full border border-slate-700"></div>
+        </div>
+
+        <!-- App Header Bar -->
+        <div class="pt-6 pb-2 px-3 flex items-center justify-between border-b border-slate-800/80 z-20 bg-navy-900/90 backdrop-blur-md rounded-t-[32px]">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-gold-600 to-gold-300 p-0.5 flex items-center justify-center shadow">
+                    <div class="w-full h-full bg-navy-900 rounded-full flex items-center justify-center text-gold-400">
+                        <i class="fa-solid fa-compass text-sm"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="text-[10px] text-slate-400 leading-tight" id="header-student-id">ID: 6601020304</div>
+                    <div class="text-xs font-bold text-slate-200 flex items-center gap-1">
+                        <span id="header-user-name">สมชาย ใจดี</span>
+                        <i class="fa-solid fa-circle-check text-sky-400 text-[10px]"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXP & Level Badge -->
+            <div class="flex items-center gap-2">
+                <div class="bg-navy-800/90 border border-gold-500/40 px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                    <i class="fa-solid fa-bolt text-gold-400 text-xs"></i>
+                    <span class="text-xs font-bold text-gold-300" id="user-exp">EXP: 2,500</span>
+                </div>
+                <div onclick="switchTab(7)" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 text-xs cursor-pointer hover:border-gold-500/50 transition">
+                    <i class="fa-solid fa-user-gear text-gold-400"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- APP CONTENT PAGES CONTAINER (Scrollable Body) -->
+        <div id="app-body" class="flex-1 overflow-y-auto no-scrollbar py-3 px-1 space-y-4 relative z-10">
+            
+            <!-- ================= TAB 1: SPLASH / ONBOARDING ================= -->
+            <section id="tab-1" class="tab-content min-h-full flex flex-col justify-between text-center p-2">
+                <div class="my-auto space-y-6">
+                    <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
+                        <div class="absolute inset-0 rounded-full bg-gold-500/10 animate-ping" style="animation-duration: 3s;"></div>
+                        <div class="w-24 h-24 rounded-full bg-gradient-to-br from-gold-400 via-gold-600 to-navy-900 p-1 shadow-lg shadow-gold-500/20">
+                            <div class="w-full h-full bg-navy-950 rounded-full flex items-center justify-center border border-gold-500/40">
+                                <i class="fa-solid fa-seedling text-4xl text-gold-400 animate-bounce"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 rounded-full text-xs uppercase tracking-wider">
+                            ยินดีต้อนรับสู่ภารกิจ
+                        </span>
+                        <h2 class="text-2xl font-bold text-slate-100 font-prompt">
+                            สร้าง <span class="gold-text">Mindset</span> นักลงทุน<br>ยกระดับการเงิน
+                        </h2>
+                        <p class="text-xs text-slate-400 px-4 leading-relaxed font-sarabun">
+                            เปลี่ยนความรู้เรื่องการเงินให้เป็นเรื่องสนุก เรียนรู้หลักการพ่อรวยสอนลูก ทดลองเทรดจริง คอร์สเรียนกับผู้เชี่ยวชาญ และก้าวสู่การเป็นเศรษฐีตัวจริง!
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-left pt-2">
+                        <div class="glass-card p-2.5 rounded-xl border border-slate-800">
+                            <i class="fa-solid fa-gamepad text-gold-400 text-sm mb-1"></i>
+                            <div class="text-xs font-semibold text-slate-200">Gamification</div>
+                            <div class="text-[10px] text-slate-400">สะสม EXP ผ่านควิซรายวัน</div>
+                        </div>
+                        <div class="glass-card p-2.5 rounded-xl border border-slate-800">
+                            <i class="fa-solid fa-chalkboard-user text-sky-400 text-sm mb-1"></i>
+                            <div class="text-xs font-semibold text-slate-200">Expert Courses</div>
+                            <div class="text-[10px] text-slate-400">คอร์สผู้เชี่ยวชาญการลงทุน</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 pb-2">
+                    <button onclick="switchTab(7)" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-navy-950 font-bold text-sm shadow-lg shadow-gold-600/30 hover:brightness-110 transition active:scale-95 flex items-center justify-center gap-2">
+                        <span>เริ่มต้นใช้งาน / ลงทะเบียนนักศึกษา</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                    <p class="text-[10px] text-slate-500 mt-2">สำหรับนักศึกษามหาวิทยาลัยธรรมศาสตร์ & ทั่วไป</p>
+                </div>
+            </section>
+
+            <!-- ================= TAB 7: LOGIN / STUDENT AUTH SCREEN ================= -->
+            <section id="tab-7" class="tab-content hidden min-h-full flex flex-col justify-between p-2 space-y-4">
+                <div class="text-center space-y-1">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl border border-gold-500/40 shadow-inner">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <h3 class="text-base font-bold gold-text">เข้าสู่ระบบ / ลงทะเบียนนักศึกษา</h3>
+                    <p class="text-[11px] text-slate-400 font-sarabun">กรอกข้อมูลเพื่อสร้างพอร์ตและบันทึกคะแนนสะสม</p>
+                </div>
+
+                <form onsubmit="handleStudentLogin(event)" class="glass-card p-4 rounded-2xl border border-gold-500/30 space-y-3">
+                    <div>
+                        <label class="block text-[11px] font-medium text-slate-300 mb-1">
+                            <i class="fa-solid fa-user text-gold-400 mr-1"></i> ชื่อ-นามสกุล / ชื่อเล่น
+                        </label>
+                        <input type="text" id="input-student-name" required placeholder="เช่น สมชาย ใจดี (นัท)" value="สมชาย ใจดี"
+                            class="w-full px-3 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-medium text-slate-300 mb-1">
+                            <i class="fa-solid fa-graduation-cap text-gold-400 mr-1"></i> รหัสนักศึกษา / อีเมลมหาวิทยาลัย
+                        </label>
+                        <input type="text" id="input-student-id" required placeholder="เช่น 6601020304" value="6601020304"
+                            class="w-full px-3 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-gold-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-medium text-slate-300 mb-1">
+                            <i class="fa-solid fa-bullseye text-gold-400 mr-1"></i> เป้าหมายการลงทุนเบื้องต้น
+                        </label>
+                        <select id="input-student-goal" class="w-full px-3 py-2 rounded-xl bg-navy-900 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-gold-500 transition cursor-pointer">
+                            <option value="สร้างอิสรภาพทางการเงินก่อนเกษียณ">สร้างอิสรภาพทางการเงินก่อนเกษียณ</option>
+                            <option value="สะสมเงินทุนสำหรับทำธุรกิจส่วนตัว">สะสมเงินทุนสำหรับทำธุรกิจส่วนตัว</option>
+                            <option value="เรียนรู้แนวคิด พ่อรวยสอนลูก & การบริหารหนี้">เรียนรู้แนวคิด พ่อรวยสอนลูก & การบริหารหนี้</option>
+                            <option value="ออมเงินสำรองฉุกเฉินและลงทุนความเสี่ยงต่ำ">ออมเงินสำรองฉุกเฉินและลงทุนความเสี่ยงต่ำ</option>
+                        </select>
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-navy-950 font-bold text-xs shadow-lg shadow-gold-500/20 hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            <span>เข้าสู่ระบบ & ยืนยันข้อมูล</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center space-y-1 pt-1">
+                    <p class="text-[10px] text-slate-500">ระบบจะทำการซิงค์ชื่อของคุณไปยังแดชบอร์ด เควส และเกมจำลอง ธปท.</p>
+                </div>
+            </section>
+
+            <!-- ================= TAB 2: DASHBOARD (CUSTOM FINANCIAL INPUTS) ================= -->
+            <section id="tab-2" class="tab-content hidden space-y-3">
+                
+                <!-- Net Worth Card -->
+                <div class="glass-card p-3.5 rounded-2xl relative overflow-hidden border border-gold-500/30">
+                    <div class="flex justify-between items-start mb-1">
+                        <div>
+                            <span class="text-[10px] text-slate-400 uppercase tracking-wider">มูลค่าทรัพย์สินสุทธิ (Net Worth)</span>
+                            <div class="text-2xl font-bold gold-text tracking-tight" id="networth-display">$1,000,000</div>
+                        </div>
+                        <span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] px-2 py-0.5 rounded-full font-medium">
+                            อัปเดตแบบเรียลไทม์
+                        </span>
+                    </div>
+
+                    <!-- Asset Growth Line Chart -->
+                    <div class="h-24 w-full mt-2">
+                        <canvas id="dashboardLineChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Interactive Financial Input Panel (NEW) -->
+                <div class="glass-card p-3 rounded-xl border border-gold-500/30 space-y-2.5">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-1.5">
+                        <div class="text-xs font-bold text-gold-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-sliders"></i>
+                            <span>กรอกข้อมูลการเงินของคุณ (Custom Input)</span>
+                        </div>
+                        <button onclick="calculateCustomFinance()" class="px-2 py-0.5 bg-gold-500 text-navy-950 text-[10px] font-bold rounded hover:bg-gold-400 transition">
+                            คำนวณใหม่
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div>
+                            <label class="block text-[10px] text-slate-400 mb-0.5">รายรับต่อเดือน ($/บ.)</label>
+                            <input type="number" id="input-monthly-income" value="30000" oninput="calculateCustomFinance()"
+                                class="w-full px-2 py-1.5 rounded-lg bg-navy-900 border border-slate-700 text-xs text-slate-100 focus:outline-none focus:border-gold-500">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400 mb-0.5">รายจ่ายต่อเดือน ($/บ.)</label>
+                            <input type="number" id="input-monthly-expense" value="12000" oninput="calculateCustomFinance()"
+                                class="w-full px-2 py-1.5 rounded-lg bg-navy-900 border border-slate-700 text-xs text-slate-100 focus:outline-none focus:border-gold-500">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <div>
+                            <label class="block text-[10px] text-slate-400 mb-0.5">เงินออมเริ่มต้น ($/บ.)</label>
+                            <input type="number" id="input-current-savings" value="100000" oninput="calculateCustomFinance()"
+                                class="w-full px-2 py-1.5 rounded-lg bg-navy-900 border border-slate-700 text-xs text-slate-100 focus:outline-none focus:border-gold-500">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400 mb-0.5">มูลค่าทรัพย์สินอื่นๆ</label>
+                            <input type="number" id="input-other-assets" value="900000" oninput="calculateCustomFinance()"
+                                class="w-full px-2 py-1.5 rounded-lg bg-navy-900 border border-slate-700 text-xs text-slate-100 focus:outline-none focus:border-gold-500">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Income / Expense Summary Display -->
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="glass-card p-2.5 rounded-xl border border-slate-800">
+                        <div class="text-[10px] text-slate-400 flex items-center gap-1">
+                            <i class="fa-solid fa-circle-arrow-down text-emerald-400"></i> กระแสเงินสดสุทธิ/ด.
+                        </div>
+                        <div class="text-sm font-bold text-emerald-400 mt-0.5" id="summary-cashflow">+$18,000</div>
+                    </div>
+                    <div class="glass-card p-2.5 rounded-xl border border-slate-800">
+                        <div class="text-[10px] text-slate-400 flex items-center gap-1">
+                            <i class="fa-solid fa-piggy-bank text-gold-400"></i> อัตราการออม (%)
+                        </div>
+                        <div class="text-sm font-bold text-gold-400 mt-0.5" id="summary-savings-rate">60%</div>
+                    </div>
+                </div>
+
+                <!-- Expense Risk Spectrum Chart -->
+                <div class="glass-card p-3 rounded-xl border border-slate-800 flex items-center gap-3">
+                    <div class="w-20 h-20 relative flex-shrink-0">
+                        <canvas id="dashboardDonutChart"></canvas>
+                    </div>
+                    <div class="flex-1 space-y-1 text-xs">
+                        <div class="text-xs font-semibold text-slate-200">สัดส่วนรายจ่าย</div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400">
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>จำเป็น</span>
+                            <span class="font-bold text-slate-200" id="pct-nec">60%</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400">
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-400"></span>ฟุ่มเฟือย</span>
+                            <span class="font-bold text-slate-200" id="pct-lux">25%</span>
+                        </div>
+                        <div class="flex items-center justify-between text-[11px] text-slate-400">
+                            <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-500"></span>หนี้เสี่ยง</span>
+                            <span class="font-bold text-slate-200" id="pct-debt">15%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Path / Map Roadmap -->
+                <div class="glass-card p-3 rounded-xl border border-slate-800">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="text-xs font-bold text-slate-200 flex items-center gap-1.5">
+                            <i class="fa-solid fa-map-location-dot text-gold-400"></i>
+                            <span>แผนที่การเรียนรู้ (Learning Map)</span>
+                        </div>
+                        <span class="text-[10px] text-gold-400">ด่าน 3/10</span>
+                    </div>
+
+                    <div class="relative py-2 flex justify-between items-center px-4">
+                        <div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-slate-800 z-0"></div>
+                        <div class="absolute left-6 w-1/2 top-1/2 -translate-y-1/2 h-1 bg-gold-500 z-0"></div>
+
+                        <div class="relative z-10 w-8 h-8 rounded-full bg-gold-500 text-navy-950 font-bold text-xs flex items-center justify-center ring-4 ring-navy-900 shadow-md cursor-pointer">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div class="relative z-10 w-8 h-8 rounded-full bg-gold-500 text-navy-950 font-bold text-xs flex items-center justify-center ring-4 ring-navy-900 shadow-md cursor-pointer">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div class="relative z-10 w-9 h-9 rounded-full bg-gradient-to-r from-sky-400 to-blue-600 text-white font-bold text-xs flex items-center justify-center ring-4 ring-navy-900 shadow-lg shadow-sky-500/40 animate-pulse-subtle cursor-pointer" onclick="switchTab(3)">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <div class="relative z-10 w-8 h-8 rounded-full bg-slate-800 text-slate-500 font-bold text-xs flex items-center justify-center ring-4 ring-navy-900">
+                            <i class="fa-solid fa-lock text-[10px]"></i>
+                        </div>
+                    </div>
+                    <div class="text-center text-[11px] text-slate-300 mt-1 font-medium">ด่านปัจจุบัน: ทำความเข้าใจหนี้ดี VS หนี้เลว</div>
+                </div>
+
+            </section>
+
+            <!-- ================= TAB 3: GAMIFIED QUIZ & QUESTS ================= -->
+            <section id="tab-3" class="tab-content hidden space-y-3">
+                
+                <div class="flex justify-between items-center bg-navy-900/60 p-2 rounded-xl border border-slate-800">
+                    <div>
+                        <h3 class="text-xs font-bold text-slate-100">เควสเศรษฐีรายวัน (Daily Quests)</h3>
+                        <p class="text-[10px] text-slate-400">ทำภารกิจรายวันเพื่อรับ EXP และเงินโบนัส</p>
+                    </div>
+                    <span class="text-[10px] bg-gold-500/20 text-gold-300 border border-gold-500/30 px-2 py-0.5 rounded-md">
+                        รีเซ็ตใน 08:42 ชม.
+                    </span>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="glass-card p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm border border-amber-500/30">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-200">อัปเดตข้อมูลการเงิน</div>
+                                <div class="text-[10px] text-slate-400">กรอกรายรับรายจ่ายในแผงควบคุม (1/1)</div>
+                            </div>
+                        </div>
+                        <button id="quest-btn-1" onclick="claimQuest(1, 50, 100)" class="px-2.5 py-1 rounded-lg bg-gold-500 text-navy-950 font-bold text-[11px] hover:bg-gold-400 transition">
+                            +50 EXP
+                        </button>
+                    </div>
+
+                    <div class="glass-card p-2.5 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-sm border border-sky-500/30">
+                                <i class="fa-solid fa-chalkboard-user"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-200">ลงทะเบียนคอร์สอบรม</div>
+                                <div class="text-[10px] text-slate-400">ดูคอร์สจากผู้เชี่ยวชาญ (0/1)</div>
+                            </div>
+                        </div>
+                        <button onclick="switchTab(8)" class="px-2.5 py-1 rounded-lg bg-sky-500 text-navy-950 font-bold text-[11px] hover:bg-sky-400 transition">
+                            ไปดูคอร์ส
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass-card-gold p-3 rounded-2xl relative overflow-hidden border border-gold-500/40 mt-3">
+                    <div class="flex items-center gap-2 text-gold-400 text-xs font-bold mb-1">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>ควิซประจำวัน: คิดแบบมหาเศรษฐี</span>
+                    </div>
+
+                    <div id="quiz-container">
+                        <p class="text-xs text-slate-200 font-medium mb-3 leading-snug">
+                            คำถาม: ข้อใดต่อไปนี้จัดว่าเป็น <span class="text-emerald-400 font-bold">"หนี้ดี (Good Debt)"</span> ตามแนวคิดการลงทุน?
+                        </p>
+
+                        <div class="space-y-2">
+                            <button onclick="checkAnswer(this, false)" class="quiz-option w-full p-2 rounded-lg bg-navy-900/80 border border-slate-700/80 text-left text-xs text-slate-300 hover:border-gold-500/50 transition">
+                                ก. หนี้บัตรเครดิตจากการซื้อกระเป๋าแบรนด์เนมลดราคา
+                            </button>
+                            <button onclick="checkAnswer(this, true)" class="quiz-option w-full p-2 rounded-lg bg-navy-900/80 border border-slate-700/80 text-left text-xs text-slate-300 hover:border-gold-500/50 transition">
+                                ข. เงินกู้ซื้ออสังหาริมทรัพย์เพื่อปล่อยเช่าได้กระแสเงินสดบวก
+                            </button>
+                            <button onclick="checkAnswer(this, false)" class="quiz-option w-full p-2 rounded-lg bg-navy-900/80 border border-slate-700/80 text-left text-xs text-slate-300 hover:border-gold-500/50 transition">
+                                ค. กู้เงินไปผ่อนรถยนต์ส่วนตัวคันใหม่ป้ายแดง
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="quiz-result" class="hidden mt-3 p-2.5 rounded-xl bg-navy-900 border border-gold-500/40 space-y-2">
+                        <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>ถูกต้อง! +150 EXP / +$500</span>
+                        </div>
+                        <p class="text-[11px] text-slate-300 leading-relaxed font-sarabun">
+                            คำอธิบาย: หนี้ดี คือหนี้ที่กู้มาแล้วสร้างรายได้หรือกระแสเงินสดเข้ามาในกระเป๋ามากกว่าดอกเบี้ยที่ต้องจ่ายออกไป เช่น อสังหาริมทรัพย์ให้เช่า
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ================= TAB 4: DEMO TRADING & STOCK SIMULATOR ================= -->
+            <section id="tab-4" class="tab-content hidden space-y-3">
+                
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xs font-bold text-slate-100">เครื่องมือจำลองอนาคต & AI วิเคราะห์หุ้น</h3>
+                        <p class="text-[10px] text-slate-400">คำนวณผลตอบแทนพอร์ตหุ้นแบบเรียลไทม์ พร้อม AI ช่วยตัดสินใจ</p>
+                    </div>
+                    <span class="text-[10px] bg-sky-500/20 text-sky-300 border border-sky-500/30 px-2 py-0.5 rounded-full">
+                        AI Model Ready
+                    </span>
+                </div>
+
+                <!-- NEW: AI Stock Analyzer Feature -->
+                <div class="glass-card p-3 rounded-xl border border-sky-500/40 space-y-2.5">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-1.5">
+                        <div class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-robot"></i>
+                            <span>AI วิเคราะห์หุ้น (ควรซื้อไหม?)</span>
+                        </div>
+                        <span class="text-[9px] bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded-full">Gemini AI</span>
+                    </div>
+
+                    <div class="space-y-2 text-xs">
+                        <div>
+                            <label class="block text-[10px] text-slate-400 mb-0.5">เลือกหุ้นหรือกองทุนที่ต้องการให้ AI วิเคราะห์</label>
+                            <select id="ai-stock-select" class="w-full px-2 py-1.5 rounded-lg bg-navy-900 border border-slate-700 text-xs text-slate-200 focus:outline-none focus:border-sky-500">
+                                <option value="SET50 Index Fund">SET50 Index Fund (หุ้นไทยพื้นฐานดี)</option>
+                                <option value="Global Tech ETF">Global Tech ETF (กองทุนเทคโนโลยีโลก)</option>
+                                <option value="Bitcoin (Crypto)">Bitcoin (คริปโตเคอเรนซี)</option>
+                                <option value="High Dividend Stock">หุ้นปันผลสูง (Dividend Yield 6%)</option>
+                            </select>
+                        </div>
+
+                        <button onclick="runAIStockAnalysis()" id="ai-analyze-btn" class="w-full py-2 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs shadow hover:brightness-110 transition flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>ให้ AI วิเคราะห์เชิงลึกทันที</span>
+                        </button>
+
+                        <!-- AI Analysis Result Box -->
+                        <div id="ai-analysis-result" class="hidden bg-navy-950 p-2.5 rounded-xl border border-sky-500/30 space-y-2 text-[11px]">
+                            <div class="flex justify-between items-center font-bold">
+                                <span id="ai-res-stock-title" class="text-sky-300">ผลวิเคราะห์: SET50 Index Fund</span>
+                                <span id="ai-res-badge" class="px-2 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">ควรซื้อ (น่าสะสม)</span>
+                            </div>
+                            <p id="ai-res-desc" class="text-slate-300 font-sarabun leading-relaxed">
+                                AI ประเมินว่าสินทรัพย์นี้มีความเสี่ยงปานกลาง เหมาะกับการลงทุนระยะยาวแบบ DCA สร้างกระแสเงินสดและชนะเงินเฟ้อได้ดี
+                            </p>
+                            <div class="grid grid-cols-2 gap-1 text-[10px] pt-1 border-t border-slate-800 text-slate-400">
+                                <div>ความเสี่ยง: <span class="text-amber-400 font-bold" id="ai-res-risk">ปานกลาง</span></div>
+                                <div>โอกาสเติบโต: <span class="text-emerald-400 font-bold" id="ai-res-growth">สูง (8-10%/ปี)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stock Price Alert Manager -->
+
+                <div class="glass-card p-3 rounded-xl border border-slate-800 space-y-3">
+                    <div>
+                        <div class="flex justify-between text-[11px] text-slate-300 mb-1">
+                            <span>เงินทุนเริ่มต้น:</span>
+                            <span class="font-bold text-gold-400" id="val-capital">$10,000</span>
+                        </div>
+                        <input type="range" id="input-capital" min="1000" max="100000" step="1000" value="10000" oninput="updateSimulation()" class="w-full accent-gold-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-[11px] text-slate-300 mb-1">
+                            <span>ระดับความเสี่ยง (คาดหวังผลตอบแทน):</span>
+                            <span class="font-bold text-sky-400" id="val-risk">ปานกลาง (8%/ปี)</span>
+                        </div>
+                        <input type="range" id="input-risk" min="1" max="3" step="1" value="2" oninput="updateSimulation()" class="w-full accent-sky-400 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-[11px] text-slate-300 mb-1">
+                            <span>ระยะเวลาลงทุน:</span>
+                            <span class="font-bold text-emerald-400" id="val-years">5 ปี</span>
+                        </div>
+                        <input type="range" id="input-years" min="1" max="20" step="1" value="5" oninput="updateSimulation()" class="w-full accent-emerald-400 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+                    </div>
+                </div>
+
+                <div class="glass-card p-3 rounded-xl border border-slate-800">
+                    <div class="text-xs font-semibold text-slate-200 mb-1 flex justify-between">
+                        <span>การเติบโตของพอร์ตในอนาคต</span>
+                        <span class="text-gold-400 font-bold" id="sim-projected-total">$14,693</span>
+                    </div>
+                    <div class="h-28 w-full">
+                        <canvas id="simChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
+                    <div class="text-[11px] text-slate-400 font-semibold px-1">หุ้นและกองทุนแนะนำ (คัดสรรแล้ว):</div>
+                    
+                    <div class="glass-card p-2 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-xs border border-blue-500/30">
+                                SET
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-200">SET50 Index Fund</div>
+                                <div class="text-[10px] text-slate-400">ดัชนีหุ้นไทย 50 ตัวแรก</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs font-bold text-emerald-400">+6.2%</div>
+                            <button onclick="tradeStock('SET50 Index Fund', 1000)" class="text-[10px] bg-slate-800 hover:bg-gold-500 hover:text-navy-950 text-gold-400 px-2 py-0.5 rounded border border-gold-500/30 transition">
+                                ซื้อจำลอง
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-2 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-xs border border-purple-500/30">
+                                TECH
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-200">Global Tech ETF</div>
+                                <div class="text-[10px] text-slate-400">กองทุนเทคโนโลยีโลก</div>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-xs font-bold text-emerald-400">+14.8%</div>
+                            <button onclick="tradeStock('Global Tech ETF', 1000)" class="text-[10px] bg-slate-800 hover:bg-gold-500 hover:text-navy-950 text-gold-400 px-2 py-0.5 rounded border border-gold-500/30 transition">
+                                ซื้อจำลอง
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ================= TAB 8: EXPERT COACHING & COURSES (NEW TAB) ================= -->
+            <section id="tab-8" class="tab-content hidden space-y-3">
+                
+                <div class="glass-card-gold p-3.5 rounded-2xl border border-gold-500/40 text-center space-y-2 relative overflow-hidden">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-xl border border-gold-500/40 shadow-inner">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-sm font-bold gold-text">คอร์สอบรม & โค้ชผู้เชี่ยวชาญ</h3>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-sarabun">
+                        ยกระดับความรู้การลงทุนกับผู้เชี่ยวชาญตัวจริง คอร์สเรียนฟรีและแบบพรีเมียมสำหรับนักศึกษาและบุคคลทั่วไป
+                    </p>
+                </div>
+
+                <!-- Course List -->
+                <div class="space-y-2.5">
+                    
+                    <!-- Course 1 -->
+                    <div class="glass-card p-3 rounded-xl border border-slate-800 space-y-2">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30">ฟรีสำหรับสมาชิก</span>
+                                <h4 class="text-xs font-bold text-slate-100 mt-1">ปูพื้นฐานหุ้นปันผล สร้างกระแสเงินสด</h4>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-gold-400 font-bold"><i class="fa-solid fa-star"></i> 4.9 (1.2k)</div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-400 font-sarabun">
+                            สอนโดย ดร.ภาณุวัฒน์ นักวางแผนการเงินระดับสากล เรียนรู้วิธีเลือกหุ้นปันผลมั่นคงปลอดภัย
+                        </p>
+                        <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                            <span class="text-[10px] text-slate-400"><i class="fa-solid fa-clock"></i> 3 ชม. / 10 บทเรียน</span>
+                            <button onclick="enrollCourse('ปูพื้นฐานหุ้นปันผล สร้างกระแสเงินสด')" class="px-3 py-1 rounded-lg bg-gold-500 text-navy-950 font-bold text-[11px] hover:bg-gold-400 transition">
+                                ลงทะเบียนเรียน
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Course 2 -->
+                    <div class="glass-card p-3 rounded-xl border border-slate-800 space-y-2">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[9px] bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded-full border border-sky-500/30">Live Workshop</span>
+                                <h4 class="text-xs font-bold text-slate-100 mt-1">จิตวิทยาการลงทุน & บริหารความเสี่ยง ธปท.</h4>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-gold-400 font-bold"><i class="fa-solid fa-star"></i> 4.95 (850)</div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-400 font-sarabun">
+                            เจาะลึกการใช้บอร์ดเกม ธปท. และการวางแผนรับมือวิกฤตเศรษฐกิจยุคดิจิทัล
+                        </p>
+                        <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                            <span class="text-[10px] text-slate-400"><i class="fa-solid fa-video"></i> เสาร์นี้ 14:00 น.</span>
+                            <button onclick="enrollCourse('จิตวิทยาการลงทุน & บริหารความเสี่ยง ธปท.')" class="px-3 py-1 rounded-lg bg-gold-500 text-navy-950 font-bold text-[11px] hover:bg-gold-400 transition">
+                                จองที่นั่ง Live
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Course 3 -->
+                    <div class="glass-card p-3 rounded-xl border border-slate-800 space-y-2">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <span class="text-[9px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full border border-purple-500/30">Masterclass</span>
+                                <h4 class="text-xs font-bold text-slate-100 mt-1">อสังหาริมทรัพย์เพื่อการลงทุนฉบับเริ่มต้น</h4>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] text-gold-400 font-bold"><i class="fa-solid fa-star"></i> 4.88 (540)</div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-slate-400 font-sarabun">
+                            เรียนรู้วิธีคำนวณ Yield คอนโดปล่อยเช่า และการกู้ธนาคารแบบมืออาชีพ
+                        </p>
+                        <div class="flex justify-between items-center pt-1 border-t border-slate-800">
+                            <span class="text-[10px] text-slate-400"><i class="fa-solid fa-clock"></i> 5 ชม. / 14 บทเรียน</span>
+                            <button onclick="enrollCourse('อสังหาริมทรัพย์เพื่อการลงทุนฉบับเริ่มต้น')" class="px-3 py-1 rounded-lg bg-gold-500 text-navy-950 font-bold text-[11px] hover:bg-gold-400 transition">
+                                ลงทะเบียนเรียน
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ================= TAB 9: PI KAVEE CHUKITKASEM EXPERT PAGE (NEW) ================= -->
+            <section id="tab-9" class="tab-content hidden space-y-3">
+                
+                <div class="glass-card-gold p-4 rounded-2xl border border-gold-500/40 text-center space-y-2 relative overflow-hidden">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-gold-600 to-amber-300 p-0.5 shadow-lg overflow-hidden flex items-center justify-center">
+                        <img src="image.png" alt="พี่กวี ชูกิจเกษม" class="w-full h-full object-cover rounded-full" onerror="this.src='https://placehold.co/100x100/0f172a/facc15?text=Kavee'">
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-bold gold-text">มุมมองการลงทุนกับ "พี่กวี ชูกิจเกษม"</h3>
+                        <p class="text-[10px] text-slate-400">กลยุทธ์การจัดพอร์ตและข้อคิดเตือนใจนักลงทุนยุคใหม่</p>
+                    </div>
+                    <div class="inline-flex items-center gap-1 bg-gold-500/10 text-gold-300 px-3 py-1 rounded-full text-[10px] border border-gold-500/30">
+                        <i class="fa-solid fa-circle-check text-emerald-400"></i> โคตรเซียนการลงทุนแห่งประเทศไทย
+                    </div>
+                </div>
+
+                <!-- Featured Quote Card -->
+                <div class="glass-card p-3.5 rounded-xl border border-gold-500/30 space-y-2 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-navy-900 to-navy-950">
+                    <div class="flex items-center gap-2 text-xs font-bold text-gold-400">
+                        <i class="fa-solid fa-quote-left text-sm text-gold-500"></i>
+                        <span>คำสอน & มุมมองเด่นจากพี่กวี</span>
+                    </div>
+                    <p class="text-xs text-slate-200 italic font-sarabun leading-relaxed px-2">
+                        "การลงทุนไม่ใช่การวิ่งแข่ง 100 เมตร แต่เป็นการวิ่งมาราธอน รวยช้าแต่มั่นคง ดีกว่ารวยเร็วแล้วหมดตัวในวันเดียว จงเลือกหุ้นที่มีพื้นฐานดี ถือยาว และปล่อยให้ดอกเบี้ยทบต้นทำงาน"
+                    </p>
+                    <div class="text-right text-[10px] text-gold-400 font-bold pr-2">
+                        — พี่กวี ชูกิจเกษม
+                    </div>
+                </div>
+
+                <!-- Expert Insights & Strategies List -->
+                <div class="space-y-2.5">
+                    <div class="text-[11px] text-slate-400 font-semibold px-1">บทวิเคราะห์และคำแนะนำประจำสัปดาห์:</div>
+
+                    <div class="glass-card p-3 rounded-xl border border-slate-800 space-y-2">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30">กลยุทธ์จัดพอร์ต</span>
+                            <span class="text-[10px] text-slate-400"><i class="fa-solid fa-calendar"></i> อัปเดตล่าสุด</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-100">จัดพอร์ตอย่างไรให้รอดในยามตลาดหุ้นผันผวน</h4>
+                        <p class="text-[10px] text-slate-300 font-sarabun leading-relaxed">
+                            พี่กวีแนะนำให้แบ่งเงินเป็น 3 ส่วน: เงินสดสำรองฉุกเฉิน 6 เดือน, หุ้นพื้นฐานปันผลสูง 50%, และสินทรัพย์เติบโตสูง (Growth/Tech) 30% เพื่อลดความเสี่ยงและสร้างกระแสเงินสดสม่ำเสมอ
+                        </p>
+                        <button onclick="addEXP(100); showToast('บันทึกบทวิเคราะห์เข้าคลังความรู้แล้ว! +100 EXP')" class="w-full py-1.5 rounded-lg bg-navy-900 hover:bg-gold-500 hover:text-navy-950 text-gold-300 font-bold text-[11px] border border-gold-500/40 transition flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-bookmark"></i> บันทึกข้อคิดนี้ (+100 EXP)
+                        </button>
+                    </div>
+
+                    <div class="glass-card p-3 rounded-xl border border-slate-800 space-y-2">
+                        <div class="flex justify-between items-start">
+                            <span class="text-[9px] bg-sky-500/20 text-sky-300 px-2 py-0.5 rounded-full border border-sky-500/30">Mindset นักลงทุน</span>
+                            <span class="text-[10px] text-slate-400"><i class="fa-solid fa-calendar"></i> บทความยอดฮิต</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-100">3 กับดักทางจิตวิทยาที่ทำให้นักลงทุนมือใหม่หมดตัว</h4>
+                        <p class="text-[10px] text-slate-300 font-sarabun leading-relaxed">
+                            1. กลัวตกรถ (FOMO) ซื้อไล่ราคาสูงเกินไป 2. หายนะจากการกู้เงินมาเล่นหุ้น (Margin) 3. ขาดวินัยในการตัดขาดทุน เรียนรู้ที่จะบริหารความเสี่ยงแบบมืออาชีพ
+                        </p>
+                        <button onclick="addEXP(100); showToast('อ่านบทความจบแล้ว! +100 EXP')" class="w-full py-1.5 rounded-lg bg-navy-900 hover:bg-gold-500 hover:text-navy-950 text-gold-300 font-bold text-[11px] border border-gold-500/40 transition flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-book-open"></i> อ่านบทความเต็ม (+100 EXP)
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ================= TAB 5: BROKER INTEGRATION ================= -->
+            <section id="tab-5" class="tab-content hidden space-y-3">
+                
+                <div class="glass-card-gold p-4 rounded-2xl border border-gold-500/40 text-center space-y-2 relative overflow-hidden">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-gold-500/20 flex items-center justify-center text-gold-400 text-2xl border border-gold-500/40 shadow-inner">
+                        <i class="fa-solid fa-umbrella"></i>
+                    </div>
+                    <h3 class="text-sm font-bold gold-text">ร่มคันใหญ่ (Umbrella Ecosystem)</h3>
+                    <p class="text-[11px] text-slate-300 leading-relaxed font-sarabun">
+                        แอปพลิเคชันนี้ทำหน้าที่เป็นพื้นที่ฝึกฝนและเรียนรู้ เมื่อคุณพร้อมลงสนามจริง สามารถเชื่อมต่อไปยังพันธมิตรทางการเงินที่ได้รับอนุญาตจาก ก.ล.ต. ได้ทันที
+                    </p>
+                </div>
+
+                <!-- Identity Verification Status Widget (NEW) -->
+                <div class="glass-card p-3 rounded-xl border border-sky-500/40 space-y-2">
+                    <div class="flex justify-between items-center">
+                        <div class="text-xs font-bold text-sky-400 flex items-center gap-1.5">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>สถานะยืนยันตัวตน (NDID / KYC)</span>
+                        </div>
+                        <span id="kyc-status-badge" class="px-2 py-0.5 rounded-full text-[10px] bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                            ยังไม่ยืนยันตัวตน
+                        </span>
+                    </div>
+                    <p class="text-[10px] text-slate-300 font-sarabun">
+                        เพื่อความปลอดภัยและปฏิบัติตามกฎระเบียบ ก.ล.ต. กรุณายยืนยันตัวตนก่อนเปิดพอร์ตจริงกับพันธมิตร
+                    </p>
+                    <button onclick="openKycModal()" id="kyc-action-btn" class="w-full py-2 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs shadow hover:brightness-110 transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-id-card-clip"></i>
+                        <span>ยืนยันตัวตนด้วยบัตรประชาชน / NDID</span>
+                    </button>
+                </div>
+
+                <div class="space-y-2 pt-1">
+                    <div class="text-[11px] text-slate-400 font-semibold px-1">พันธมิตรสถาบันการเงินที่รองรับ:</div>
+
+                    <div class="glass-card p-3 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-lg font-bold">
+                                B
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-100">Bitkub Online</div>
+                                <div class="text-[10px] text-emerald-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-shield text-[9px]"></i> รับรองโดย ก.ล.ต.
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="connectPartner('Bitkub Online')" class="px-3 py-1.5 bg-navy-800 hover:bg-gold-500 hover:text-navy-950 text-gold-300 font-bold text-xs rounded-lg border border-gold-500/40 transition">
+                            เปิดบัญชี
+                        </button>
+                    </div>
+
+                    <div class="glass-card p-3 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-purple-600/20 border border-purple-500/40 flex items-center justify-center text-purple-400 text-lg font-bold">
+                                INV
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-100">InnovestX (SCBX)</div>
+                                <div class="text-[10px] text-emerald-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-shield text-[9px]"></i> รับรองโดย ก.ล.ต.
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="connectPartner('InnovestX')" class="px-3 py-1.5 bg-navy-800 hover:bg-gold-500 hover:text-navy-950 text-gold-300 font-bold text-xs rounded-lg border border-gold-500/40 transition">
+                            เปิดบัญชี
+                        </button>
+                    </div>
+
+                    <div class="glass-card p-3 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 text-lg font-bold">
+                                K
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-100">Kasikorn Securities</div>
+                                <div class="text-[10px] text-emerald-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-shield text-[9px]"></i> รับรองโดย ก.ล.ต.
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="connectPartner('Kasikorn Securities')" class="px-3 py-1.5 bg-navy-800 hover:bg-gold-500 hover:text-navy-950 text-gold-300 font-bold text-xs rounded-lg border border-gold-500/40 transition">
+                            เปิดบัญชี
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ================= TAB 6: BOT GAME SIMULATOR (รู้ก่อน ทำก่อน รวยกว่า) ================= -->
+            <section id="tab-6" class="tab-content hidden space-y-3">
+                
+                <div class="text-center space-y-1 bg-gradient-to-b from-navy-900 to-navy-950 p-3 rounded-2xl border border-gold-500/40 shadow-lg relative overflow-hidden">
+                    <div class="inline-block text-[10px] font-bold text-gold-400 uppercase tracking-widest bg-gold-500/10 px-2.5 py-0.5 rounded-full border border-gold-500/30">
+                        game simulator
+                    </div>
+                    <h2 class="text-lg font-bold gold-text">รู้ก่อน ทำก่อน รวยกว่า</h2>
+                    <p class="text-[10px] text-slate-400">บอร์ดเกมการเงินโดย ธนาคารแห่งประเทศไทย (ธปท.)</p>
+
+                    <div class="grid grid-cols-2 gap-1.5 pt-2 text-left">
+                        <div class="bg-navy-900/90 p-1.5 rounded-lg border border-slate-800 flex items-center justify-between">
+                            <span class="text-[9px] text-slate-300">บริหารความเสี่ยง & ประกัน</span>
+                            <i id="pillar-check-1" class="fa-solid fa-circle-check text-slate-600 text-xs"></i>
+                        </div>
+                        <div class="bg-navy-900/90 p-1.5 rounded-lg border border-slate-800 flex items-center justify-between">
+                            <span class="text-[9px] text-slate-300">ลงทุนเพื่ออนาคต</span>
+                            <i id="pillar-check-2" class="fa-solid fa-circle-check text-slate-600 text-xs"></i>
+                        </div>
+                        <div class="bg-navy-900/90 p-1.5 rounded-lg border border-slate-800 flex items-center justify-between">
+                            <span class="text-[9px] text-slate-300">การจัดการภาษี</span>
+                            <i id="pillar-check-3" class="fa-solid fa-circle-check text-slate-600 text-xs"></i>
+                        </div>
+                        <div class="bg-navy-900/90 p-1.5 rounded-lg border border-slate-800 flex items-center justify-between">
+                            <span class="text-[9px] text-slate-300">การคำนวณเงินเฟ้อ</span>
+                            <i id="pillar-check-4" class="fa-solid fa-circle-check text-slate-600 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 1 -->
+                <div id="bot-step-1" class="bot-step-panel glass-card p-3.5 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="text-center">
+                        <h3 class="text-xs font-bold text-slate-100">ขั้นตอนที่ 1: เลือกอาชีพ & เงินเดือน</h3>
+                        <p class="text-[10px] text-slate-400">เลือกสายอาชีพช่วงเริ่มต้นเพื่อกำหนดกระแสเงินสด</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="selectCareer('ผู้จัดการ', 30000)" class="career-btn p-2 rounded-xl bg-navy-900 border border-slate-700 text-left hover:border-gold-500 transition">
+                            <div class="text-xs font-bold text-gold-400">👔 ผู้จัดการ</div>
+                            <div class="text-[11px] text-slate-200 font-bold">30,000 บาท/เดือน</div>
+                        </button>
+                        <button onclick="selectCareer('วิศวกร', 35000)" class="career-btn p-2 rounded-xl bg-navy-900 border border-slate-700 text-left hover:border-gold-500 transition">
+                            <div class="text-xs font-bold text-sky-400">👷 วิศวกร</div>
+                            <div class="text-[11px] text-slate-200 font-bold">35,000 บาท/เดือน</div>
+                        </button>
+                        <button onclick="selectCareer('พนักงานขาย', 25000)" class="career-btn p-2 rounded-xl bg-navy-900 border border-slate-700 text-left hover:border-gold-500 transition">
+                            <div class="text-xs font-bold text-emerald-400">👩‍💼 พนักงานขาย</div>
+                            <div class="text-[11px] text-slate-200 font-bold">25,000 บาท/เดือน</div>
+                        </button>
+                        <button onclick="selectCareer('ฟรีแลนซ์', 40000)" class="career-btn p-2 rounded-xl bg-navy-900 border border-slate-700 text-left hover:border-gold-500 transition">
+                            <div class="text-xs font-bold text-purple-400">💻 ฟรีแลนซ์</div>
+                            <div class="text-[11px] text-slate-200 font-bold">40,000 บาท/เดือน</div>
+                        </button>
+                    </div>
+
+                    <div id="paystub-box" class="bg-navy-950 p-2.5 rounded-xl border border-gold-500/30 text-xs space-y-1">
+                        <div class="text-[11px] font-bold text-gold-400 border-b border-slate-800 pb-1">Pay Stub สรุปเงินเดือนสุทธิ</div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>เงินเดือนฐาน:</span>
+                            <span id="stub-base" class="font-bold">30,000 บาท</span>
+                        </div>
+                        <div class="flex justify-between text-rose-400">
+                            <span>หักภาษี ณ ที่จ่าย (10%):</span>
+                            <span id="stub-tax" class="font-bold">-3,000 บาท</span>
+                        </div>
+                        <div class="flex justify-between text-emerald-400 pt-1 border-t border-slate-800 font-bold">
+                            <span>รับสุทธิ:</span>
+                            <span id="stub-net">27,000 บาท</span>
+                        </div>
+                    </div>
+
+                    <button onclick="nextBotStep(2)" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-gold-600 to-gold-500 text-navy-950 font-bold text-xs shadow-md hover:brightness-110 transition">
+                        ยืนยันอาชีพ & รับเงินเดือน ->
+                    </button>
+                </div>
+
+                <!-- STEP 2 -->
+                <div id="bot-step-2" class="bot-step-panel hidden glass-card p-3.5 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="text-center">
+                        <h3 class="text-xs font-bold text-slate-100">ขั้นตอนที่ 2: บริหารความเสี่ยง & ซื้อประกัน</h3>
+                        <p class="text-[10px] text-slate-400">โอนย้ายความเสี่ยงเพื่อป้องกันการสูญเสียเงินก้อนใหญ่</p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-1.5">
+                        <div onclick="selectInsurance('Plan A', 1000)" class="ins-card p-2 rounded-xl bg-navy-900 border border-slate-700 text-center cursor-pointer hover:border-gold-500 transition">
+                            <i class="fa-solid fa-shield-cat text-gold-400 text-base mb-1"></i>
+                            <div class="text-[11px] font-bold text-slate-200">Plan A</div>
+                            <div class="text-[9px] text-slate-400">อุบัติเหตุ</div>
+                            <div class="text-[10px] text-gold-400 font-bold mt-1">1,000 บ.</div>
+                        </div>
+                        <div onclick="selectInsurance('Plan B', 2500)" class="ins-card p-2 rounded-xl bg-navy-900 border border-slate-700 text-center cursor-pointer hover:border-gold-500 transition">
+                            <i class="fa-solid fa-user-shield text-sky-400 text-base mb-1"></i>
+                            <div class="text-[11px] font-bold text-slate-200">Plan B</div>
+                            <div class="text-[9px] text-slate-400">สุขภาพ</div>
+                            <div class="text-[10px] text-sky-400 font-bold mt-1">2,500 บ.</div>
+                        </div>
+                        <div onclick="selectInsurance('Plan C', 4000)" class="ins-card p-2 rounded-xl bg-navy-900 border border-slate-700 text-center cursor-pointer hover:border-gold-500 transition">
+                            <i class="fa-solid fa-shield-halved text-emerald-400 text-base mb-1"></i>
+                            <div class="text-[11px] font-bold text-slate-200">Plan C</div>
+                            <div class="text-[9px] text-slate-400">ครอบคลุม</div>
+                            <div class="text-[10px] text-emerald-400 font-bold mt-1">4,000 บ.</div>
+                        </div>
+                    </div>
+
+                    <div id="ins-selected-status" class="bg-navy-950 p-2 rounded-xl border border-gold-500/30 text-center text-xs text-gold-300 font-medium">
+                        เลือกแล้ว: <span id="ins-name-display" class="font-bold">Plan A (1,000 บาท)</span>
+                    </div>
+
+                    <button onclick="nextBotStep(3)" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-gold-600 to-gold-500 text-navy-950 font-bold text-xs shadow-md hover:brightness-110 transition">
+                        ยืนยันการจัดสรรประกัน ->
+                    </button>
+                </div>
+
+                <!-- STEP 3 -->
+                <div id="bot-step-3" class="bot-step-panel hidden glass-card p-3.5 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="text-center">
+                        <h3 class="text-xs font-bold text-slate-100">ขั้นตอนที่ 3: เลือกลงทุน & กระจายความเสี่ยง</h3>
+                        <p class="text-[10px] text-slate-400">สัดส่วนระหว่างเงินออมความเสี่ยงต่ำ vs หุ้นความเสี่ยงสูง</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-center">
+                        <div class="bg-navy-900 p-2.5 rounded-xl border border-slate-800">
+                            <i class="fa-solid fa-piggy-bank text-emerald-400 text-lg mb-1"></i>
+                            <div class="text-xs font-bold text-slate-200">ความเสี่ยงต่ำ</div>
+                            <div id="alloc-low-val" class="text-sm font-bold text-emerald-400 mt-1">50%</div>
+                        </div>
+                        <div class="bg-navy-900 p-2.5 rounded-xl border border-slate-800">
+                            <i class="fa-solid fa-chart-line text-rose-400 text-lg mb-1"></i>
+                            <div class="text-xs font-bold text-slate-200">ความเสี่ยงสูง</div>
+                            <div id="alloc-high-val" class="text-sm font-bold text-rose-400 mt-1">50%</div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="range" id="bot-alloc-slider" min="0" max="100" step="10" value="50" oninput="updateBotAlloc(this.value)" class="w-full accent-gold-500 h-2 bg-slate-800 rounded-lg cursor-pointer">
+                    </div>
+
+                    <button onclick="nextBotStep(4)" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-gold-600 to-gold-500 text-navy-950 font-bold text-xs shadow-md hover:brightness-110 transition">
+                        ยืนยันพอร์ตลงทุน & ไปจั่วการ์ดเหตุการณ์ ->
+                    </button>
+                </div>
+
+                <!-- STEP 4 (WITH 3D CARD SHUFFLE & DRAW ANIMATION) -->
+                <div id="bot-step-4" class="bot-step-panel hidden glass-card p-3.5 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="text-center">
+                        <h3 class="text-xs font-bold text-slate-100">ขั้นตอนที่ 4: สวนสนุกการ์ดเหตุการณ์</h3>
+                        <p class="text-[10px] text-slate-400">สับสำรับไพ่และจั่วการ์ดเพื่อทดสอบภารกิจเศรษฐี</p>
+                    </div>
+
+                    <!-- 3D Card Shuffling Deck Arena -->
+                    <div class="relative h-36 w-full flex items-center justify-center perspective-1000 my-2" id="card-deck-arena">
+                        <div class="deck-table absolute inset-0 flex items-center justify-center">
+                            <!-- Card 1 (Left) -->
+                            <div class="shuffling-card absolute w-20 h-28 bg-gradient-to-br from-navy-800 to-navy-950 border-2 border-gold-500/60 rounded-xl shadow-xl flex flex-col items-center justify-center text-gold-400 transition-all duration-500" style="transform: translateX(-35px) rotate(-12deg);">
+                                <i class="fa-solid fa-question text-xl"></i>
+                                <span class="text-[8px] mt-1 text-slate-400 font-bold">BOT CARD</span>
+                            </div>
+                            <!-- Card 2 (Center) -->
+                            <div class="shuffling-card absolute w-20 h-28 bg-gradient-to-br from-navy-800 to-navy-950 border-2 border-gold-500 rounded-xl shadow-2xl flex flex-col items-center justify-center text-gold-400 z-10 transition-all duration-500" style="transform: translateX(0px) rotate(0deg);">
+                                <i class="fa-solid fa-brain text-2xl"></i>
+                                <span class="text-[8px] mt-1 text-gold-300 font-bold">SPECIAL</span>
+                            </div>
+                            <!-- Card 3 (Right) -->
+                            <div class="shuffling-card absolute w-20 h-28 bg-gradient-to-br from-navy-800 to-navy-950 border-2 border-gold-500/60 rounded-xl shadow-xl flex flex-col items-center justify-center text-gold-400 transition-all duration-500" style="transform: translateX(35px) rotate(12deg);">
+                                <i class="fa-solid fa-shield-halved text-xl"></i>
+                                <span class="text-[8px] mt-1 text-slate-400 font-bold">RISK CARD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Revealed Event Result Box (Hidden initially) -->
+                    <div id="revealed-card-result" class="hidden bg-navy-900 p-3 rounded-2xl border border-gold-500/60 text-center space-y-2 animate-bounce" style="animation-iteration-count: 1; animation-duration: 0.6s;">
+                        <div id="event-icon" class="w-10 h-10 mx-auto rounded-full bg-rose-500/20 text-rose-400 flex items-center justify-center text-lg border border-rose-500/40">
+                            <i class="fa-solid fa-car-burst"></i>
+                        </div>
+                        <h4 id="event-title" class="text-xs font-bold text-rose-400">เกิดอุบัติเหตุทางรถยนต์!</h4>
+                        <p id="event-desc" class="text-[11px] text-slate-300 leading-snug font-sarabun">
+                            ค่ารักษาและซ่อมรถ 15,000 บาท แต่คุณซื้อประกันไว้แล้ว จึงรอดพ้นวิกฤต!
+                        </p>
+                    </div>
+
+                    <button id="btn-draw-card" onclick="startCardShuffleAnimation()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-navy-950 font-bold text-xs shadow-md hover:brightness-110 transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-dice"></i>
+                        <span>สับไพ่และจั่วการ์ดเหตุการณ์พิเศษ</span>
+                    </button>
+
+                    <button id="btn-next-step-5" onclick="nextBotStep(5)" class="hidden w-full py-2.5 rounded-xl bg-gradient-to-r from-gold-600 to-gold-500 text-navy-950 font-bold text-xs shadow-md hover:brightness-110 transition">
+                        ไปขั้นตอนคำนวณภาษีประจำปี ->
+                    </button>
+                </div>
+
+                <!-- STEP 5 -->
+                <div id="bot-step-5" class="bot-step-panel hidden glass-card p-3.5 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="text-center">
+                        <h3 class="text-xs font-bold text-slate-100">ขั้นตอนที่ 5: คำนวณภาษีประจำปี</h3>
+                        <p class="text-[10px] text-slate-400">ใช้สิทธิลดหย่อนจากประกันและกองทุนเพื่อประหยัดภาษี</p>
+                    </div>
+
+                    <div class="bg-navy-950 p-3 rounded-2xl border border-gold-500/30 text-xs space-y-1.5">
+                        <div class="text-xs font-bold text-gold-400 border-b border-slate-800 pb-1 flex justify-between">
+                            <span>Pay Stub ภาษีประจำปี</span>
+                            <i class="fa-solid fa-calculator"></i>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span>รายได้รวมต่อปี:</span>
+                            <span class="font-bold">360,000 บาท</span>
+                        </div>
+                        <div class="flex justify-between text-slate-400">
+                            <span>ค่าใช้จ่ายส่วนตัว:</span>
+                            <span>-100,000 บาท</span>
+                        </div>
+                        <div class="flex justify-between text-rose-400">
+                            <span>ภาษีเงินได้ปกติ:</span>
+                            <span>10,000 บาท</span>
+                        </div>
+                        <div class="flex justify-between text-emerald-400">
+                            <span>สิทธิลดหย่อน (ประกัน/กองทุน):</span>
+                            <span>-5,000 บาท</span>
+                        </div>
+                        <div class="flex justify-between text-gold-300 pt-1.5 border-t border-slate-800 font-bold text-sm">
+                            <span>จ่ายภาษีจริงสุทธิ:</span>
+                            <span>5,000 บาท</span>
+                        </div>
+                    </div>
+
+                    <button onclick="nextBotStep(6)" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-gold-600 to-gold-500 text-navy-950 font-bold text-xs shadow-md hover:brightness-110 transition">
+                        ไปหน้าสรุปเป้าหมายชีวิต ->
+                    </button>
+                </div>
+
+                <!-- STEP 6 -->
+                <div id="bot-step-6" class="bot-step-panel hidden glass-card p-3.5 rounded-2xl border border-slate-800 space-y-3 text-center">
+                    <div class="space-y-1">
+                        <h3 class="text-sm font-bold gold-text">สรุปเกม & เป้าหมายชีวิต</h3>
+                        <p class="text-[10px] text-slate-400">ประเมินความสำเร็จทางการเงินจากการตัดสินใจของคุณ</p>
+                    </div>
+
+                    <div class="bg-navy-900 p-3 rounded-2xl border border-gold-500/40 space-y-2">
+                        <div class="text-3xl">🎯</div>
+                        <div class="text-xs text-slate-300">
+                            เป้าหมายการเงินอาชีพ: <span class="font-bold text-gold-400">200,000 บาท</span>
+                        </div>
+                        <div class="text-base font-bold text-slate-100">
+                            เงินออมสุทธิรวม: <span class="text-emerald-400">185,000 บาท</span>
+                        </div>
+
+                        <div class="p-2 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold">
+                            🎉 ยอดเยี่ยม! บรรลุเป้าหมายการเงินปลอดภัย
+                        </div>
+                    </div>
+
+                    <button onclick="resetBotGame()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-navy-950 font-bold text-xs shadow-md hover:brightness-110 transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>เริ่มเล่นใหม่อีกครั้ง</span>
+                    </button>
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- APP BOTTOM NAVIGATION BAR -->
+        <nav class="pt-2 pb-1 px-1 bg-navy-900/95 backdrop-blur-md border-t border-slate-800 rounded-b-[32px] z-30 flex justify-around items-center">
+            
+            <button onclick="switchTab(1)" id="nav-btn-1" class="nav-btn flex flex-col items-center gap-0.5 text-gold-400">
+                <i class="fa-solid fa-house text-xs"></i>
+                <span class="text-[7.5px] font-medium">หน้าหลัก</span>
+            </button>
+
+            <button onclick="switchTab(2)" id="nav-btn-2" class="nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-gold-300 transition">
+                <i class="fa-solid fa-chart-pie text-xs"></i>
+                <span class="text-[7.5px] font-medium">แผงควบคุม</span>
+            </button>
+
+            <button onclick="switchTab(3)" id="nav-btn-3" class="nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-gold-300 transition relative">
+                <div class="relative">
+                    <i class="fa-solid fa-list-check text-xs"></i>
+                    <span class="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-rose-500"></span>
+                </div>
+                <span class="text-[7.5px] font-medium">เควส</span>
+            </button>
+
+            <button onclick="switchTab(4)" id="nav-btn-4" class="nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-gold-300 transition">
+                <i class="fa-solid fa-chart-line text-xs"></i>
+                <span class="text-[7.5px] font-medium">จำลองพอร์ต</span>
+            </button>
+
+            <button onclick="switchTab(8)" id="nav-btn-8" class="nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-gold-300 transition">
+                <i class="fa-solid fa-chalkboard-user text-xs"></i>
+                <span class="text-[7.5px] font-medium">คอร์ส</span>
+            </button>
+
+            <button onclick="switchTab(9)" id="nav-btn-9" class="nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-gold-300 transition">
+                <i class="fa-solid fa-user-tie text-xs"></i>
+                <span class="text-[7.5px] font-medium">พี่กวี</span>
+            </button>
+
+            <button onclick="switchTab(5)" id="nav-btn-5" class="nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-gold-300 transition">
+                <i class="fa-solid fa-handshake text-xs"></i>
+                <span class="text-[7.5px] font-medium">พาร์ทเนอร์</span>
+            </button>
+
+            <button onclick="switchTab(6)" id="nav-btn-6" class="nav-btn flex flex-col items-center gap-0.5 text-slate-400 hover:text-gold-300 transition">
+                <i class="fa-solid fa-dice text-xs"></i>
+                <span class="text-[7.5px] font-medium">เกม ธปท.</span>
+            </button>
+
+        </nav>
+
+        <!-- Toast Notification Pop-up -->
+        <div id="toast" class="absolute top-16 left-1/2 -translate-x-1/2 bg-gold-500 text-navy-950 font-bold text-xs px-4 py-2 rounded-full shadow-lg shadow-gold-500/40 z-50 transform transition-all duration-300 -translate-y-12 opacity-0 pointer-events-none flex items-center gap-2">
+            <i class="fa-solid fa-circle-check"></i>
+            <span id="toast-msg">ทำภารกิจสำเร็จ!</span>
+        </div>
+
+        <!-- IDENTITY VERIFICATION (KYC / NDID) MODAL -->
+        <div id="kyc-modal" class="hidden absolute inset-0 bg-navy-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+            <div class="glass-card p-4 rounded-2xl border border-gold-500/50 w-full max-w-[340px] space-y-3 relative">
+                <button onclick="closeKycModal()" class="absolute top-3 right-3 text-slate-400 hover:text-white text-xs">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+
+                <div class="text-center space-y-1">
+                    <div class="w-10 h-10 mx-auto rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center text-lg border border-sky-500/40">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-slate-100">ยืนยันตัวตนดิจิทัล (KYC / NDID)</h3>
+                    <p class="text-[10px] text-slate-400 font-sarabun">กรอกข้อมูลบัตรประชาชนและยืนยัน OTP เพื่อเปิดพอร์ตจริง</p>
+                </div>
+
+                <div class="space-y-2 text-xs">
+                    <div>
+                        <label class="block text-[10px] text-slate-400 mb-0.5">เลขประจำตัวประชาชน (13 หลัก)</label>
+                        <input type="text" id="kyc-id-card" placeholder="1-xxxx-xxxxx-xx-x" maxlength="13" value="1100701234567"
+                            class="w-full px-2.5 py-1.5 rounded-lg bg-navy-900 border border-slate-700 text-xs text-slate-100 focus:outline-none focus:border-sky-500">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400 mb-0.5">เบอร์โทรศัพท์มือถือรับ OTP</label>
+                        <input type="text" id="kyc-phone" placeholder="089-123-4567" value="089-123-4567"
+                            class="w-full px-2.5 py-1.5 rounded-lg bg-navy-900 border border-slate-700 text-xs text-slate-100 focus:outline-none focus:border-sky-500">
+                    </div>
+                    <div id="otp-container" class="hidden">
+                        <label class="block text-[10px] text-slate-400 mb-0.5">รหัส OTP (จำลอง: 1234)</label>
+                        <input type="text" id="kyc-otp-code" placeholder="1234" maxlength="4" value="1234"
+                            class="w-full px-2.5 py-1.5 rounded-lg bg-navy-900 border border-slate-700 text-xs text-slate-100 font-bold tracking-widest text-center focus:outline-none focus:border-sky-500">
+                    </div>
+                </div>
+
+                <div class="pt-1 space-y-2">
+                    <button id="kyc-submit-btn" onclick="processKycStep()" class="w-full py-2.5 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold text-xs shadow hover:brightness-110 transition">
+                        รับรหัส OTP
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Information -->
+    <footer class="text-center text-slate-500 text-xs my-3 space-y-1">
+        <p>© 2026 HOW TO BE A BILLIONAIRE - มหาวิทยาลัยธรรมศาสตร์</p>
+        <p class="text-[10px] text-slate-600">ต้นแบบแอปพลิเคชันจำลองเพื่อการเรียนรู้ด้านการเงินและการลงทุน</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let studentProfile = {
+            name: "สมชาย ใจดี",
+            studentId: "6601020304",
+            goal: "สร้างอิสรภาพทางการเงินก่อนเกษียณ"
+        };
+        let currentEXP = 2500;
+        let isKycVerified = false;
+        let kycStep = 1;
+        let dashboardLineChart, dashboardDonutChart, simChart;
+        let userStockAlerts = [
+            { stock: "SET50 Index Fund", target: 1200 }
+        ];
+
+        // KYC Verification Modal Functions
+        function openKycModal() {
+            if (isKycVerified) {
+                showToast("บัญชีของคุณยืนยันตัวตนเรียบร้อยแล้ว!");
+                return;
+            }
+            kycStep = 1;
+            document.getElementById('otp-container').classList.add('hidden');
+            document.getElementById('kyc-submit-btn').innerText = "รับรหัส OTP";
+            document.getElementById('kyc-modal').classList.remove('hidden');
+        }
+
+        function closeKycModal() {
+            document.getElementById('kyc-modal').classList.add('hidden');
+        }
+
+        function processKycStep() {
+            if (kycStep === 1) {
+                const idCard = document.getElementById('kyc-id-card').value;
+                const phone = document.getElementById('kyc-phone').value;
+                if (!idCard || idCard.length < 13) {
+                    showToast("กรุณากรอกเลขบัตรประจำตัวประชาชนให้ครบ 13 หลัก");
+                    return;
+                }
+                showToast("ระบบได้ส่งรหัส OTP ไปยังเบอร์ " + phone + " แล้ว (จำลอง OTP: 1234)");
+                document.getElementById('otp-container').classList.remove('hidden');
+                document.getElementById('kyc-submit-btn').innerText = "ยืนยันรหัส OTP & ตรวจสอบตัวตน";
+                kycStep = 2;
+            } else {
+                const otp = document.getElementById('kyc-otp-code').value;
+                if (otp !== "1234") {
+                    showToast("รหัส OTP ไม่ถูกต้อง (ใช้ 1234)");
+                    return;
+                }
+                isKycVerified = true;
+                closeKycModal();
+                
+                // Update KYC status badge in UI
+                const badge = document.getElementById('kyc-status-badge');
+                badge.innerText = "ยืนยันตัวตนสำเร็จ (KYC ผ่าน)";
+                badge.className = "px-2 py-0.5 rounded-full text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+                
+                const btn = document.getElementById('kyc-action-btn');
+                btn.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i><span>ยืนยันตัวตนเรียบร้อยแล้ว</span>`;
+                btn.disabled = true;
+                btn.className = "w-full py-2 rounded-lg bg-navy-900 border border-emerald-500/40 text-emerald-300 font-bold text-xs cursor-default";
+
+                addEXP(300);
+                showToast("ยืนยันตัวตนสำเร็จ! รับ +300 EXP");
+            }
+        }
+
+        // AI Stock Analysis Function
+        function runAIStockAnalysis() {
+            const stockName = document.getElementById('ai-stock-select').value;
+            const btn = document.getElementById('ai-analyze-btn');
+            const resultBox = document.getElementById('ai-analysis-result');
+            
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> AI กำลังประมวลผลข้อมูลตลาด...`;
+
+            setTimeout(() => {
+                let analysisData = {
+                    title: `ผลวิเคราะห์: ${stockName}`,
+                    recommendation: "ควรซื้อ (น่าสะสม DCA)",
+                    badgeClass: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+                    desc: `AI ตรวจสอบงบการเงินและเทรนด์ตลาดแล้วพบว่า ${stockName} มีพื้นฐานแข็งแกร่ง เหมาะกับการทยอยสะสมเพื่อลงทุนระยะยาว 3-5 ปีขึ้นไป`,
+                    risk: "ปานกลาง",
+                    growth: "สูง (8-12%/ปี)"
+                };
+
+                if (stockName === "Global Tech ETF") {
+                    analysisData.recommendation = "ควรซื้อ (เน้นเติบโตสูง)";
+                    analysisData.badgeClass = "bg-sky-500/20 text-sky-400 border-sky-500/30";
+                    analysisData.desc = `กลุ่มเทคโนโลยีโลกมีอัตราการเติบโตของกำไรสูง แต่อาจมีความผันผวนระยะสั้น แนะนำแบ่งไม้ทยอยซื้อสะสมทีละน้อย`;
+                    analysisData.risk = "สูง";
+                    analysisData.growth = "สูงมาก (12-15%/ปี)";
+                } else if (stockName === "Bitcoin (Crypto)") {
+                    analysisData.recommendation = "ควรซื้อด้วยความระมัดระวัง";
+                    analysisData.badgeClass = "bg-amber-500/20 text-amber-400 border-amber-500/30";
+                    analysisData.desc = `มีความผันผวนสูงมาก เหมาะกับพอร์ตที่มีความเสี่ยงสูงไม่เกิน 5-10% ของพอร์ตทั้งหมดเพื่อกระจายความเสี่ยง`;
+                    analysisData.risk = "สูงมาก";
+                    analysisData.growth = "ไม่จำกัด / ผันผวนสูง";
+                } else if (stockName === "High Dividend Stock") {
+                    analysisData.recommendation = "ควรซื้อ (เหมาะสร้างกระแสเงินสด)";
+                    analysisData.badgeClass = "bg-emerald-500/20 text-emerald-400 border-emerald-500/30";
+                    analysisData.desc = `หุ้นปันผลสม่ำเสมอ Dividend Yield สูงกว่า 6% เหมาะสำหรับผู้ที่ต้องการกระแสเงินสดเข้าพอร์ตทุกปี`;
+                    analysisData.risk = "ต่ำ-ปานกลาง";
+                    analysisData.growth = "ปานกลาง (5-7%/ปี)";
+                }
+
+                document.getElementById('ai-res-stock-title').innerText = analysisData.title;
+                const badge = document.getElementById('ai-res-badge');
+                badge.innerText = analysisData.recommendation;
+                badge.className = `px-2 py-0.5 rounded text-[10px] border ${analysisData.badgeClass}`;
+                document.getElementById('ai-res-desc').innerText = analysisData.desc;
+                document.getElementById('ai-res-risk').innerText = analysisData.risk;
+                document.getElementById('ai-res-growth').innerText = analysisData.growth;
+
+                resultBox.classList.remove('hidden');
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-wand-magic-sparkles"></i><span>ให้ AI วิเคราะห์เชิงลึกทันที</span>`;
+                addEXP(50);
+                showToast("AI วิเคราะห์หุ้นสำเร็จ! +50 EXP");
+            }, 1000);
+        }
+
+        let botState = {
+            career: 'ผู้จัดการ',
+            salary: 30000,
+            insuranceName: 'Plan A',
+            insuranceCost: 1000,
+            hasInsurance: true,
+            allocLow: 50,
+            allocHigh: 50
+        };
+
+        window.onload = function() {
+            initDashboardCharts();
+            initSimChart();
+            calculateCustomFinance();
+            updateSimulation();
+            updateProfileUI();
+            renderStockAlerts();
+        };
+
+        function handleStudentLogin(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('input-student-name').value.trim();
+            const idInput = document.getElementById('input-student-id').value.trim();
+            const goalInput = document.getElementById('input-student-goal').value;
+
+            if (nameInput) studentProfile.name = nameInput;
+            if (idInput) studentProfile.studentId = idInput;
+            if (goalInput) studentProfile.goal = goalInput;
+
+            updateProfileUI();
+            showToast(`ยินดีต้อนรับคุณ ${studentProfile.name}!`);
+            switchTab(2);
+        }
+
+        function updateProfileUI() {
+            document.getElementById('header-user-name').innerText = studentProfile.name;
+            document.getElementById('header-student-id').innerText = `ID: ${studentProfile.studentId}`;
+        }
+
+        function switchTab(tabIndex) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-gold-400');
+                btn.classList.add('text-slate-400');
+            });
+
+            document.getElementById(`tab-${tabIndex}`).classList.remove('hidden');
+
+            const activeBtn = document.getElementById(`nav-btn-${tabIndex}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-slate-400');
+                activeBtn.classList.add('text-gold-400');
+            }
+
+            document.getElementById('app-body').scrollTop = 0;
+        }
+
+        // Custom Financial Inputs Calculation (Dashboard)
+        function calculateCustomFinance() {
+            const income = parseFloat(document.getElementById('input-monthly-income').value) || 0;
+            const expense = parseFloat(document.getElementById('input-monthly-expense').value) || 0;
+            const savings = parseFloat(document.getElementById('input-current-savings').value) || 0;
+            const otherAssets = parseFloat(document.getElementById('input-other-assets').value) || 0;
+
+            const netWorth = savings + otherAssets;
+            const cashFlow = income - expense;
+            const savingsRate = income > 0 ? Math.round((cashFlow / income) * 100) : 0;
+
+            // Update Net Worth Display
+            document.getElementById('networth-display').innerText = `$${netWorth.toLocaleString()}`;
+            document.getElementById('summary-cashflow').innerText = `${cashFlow >= 0 ? '+' : ''}$${cashFlow.toLocaleString()}/ด.`;
+            document.getElementById('summary-savings-rate').innerText = `${Math.max(0, savingsRate)}%`;
+
+            // Estimate expense split
+            const nec = Math.round(expense * 0.6);
+            const lux = Math.round(expense * 0.25);
+            const debt = expense - nec - lux;
+
+            document.getElementById('pct-nec').innerText = `${Math.round((nec/expense)*100 || 60)}%`;
+            document.getElementById('pct-lux').innerText = `${Math.round((lux/expense)*100 || 25)}%`;
+            document.getElementById('pct-debt').innerText = `${Math.round((debt/expense)*100 || 15)}%`;
+
+            if (dashboardDonutChart) {
+                dashboardDonutChart.data.datasets[0].data = [nec, lux, Math.max(0, debt)];
+                dashboardDonutChart.update();
+            }
+
+            if (dashboardLineChart) {
+                dashboardLineChart.data.datasets[0].data = [
+                    netWorth * 0.9,
+                    netWorth * 0.93,
+                    netWorth * 0.96,
+                    netWorth * 0.98,
+                    netWorth
+                ];
+                dashboardLineChart.update();
+            }
+
+            showToast("อัปเดตแผงควบคุมการเงินเรียบร้อย!");
+        }
+
+        function enrollCourse(courseName) {
+            addEXP(120);
+            showToast(`ลงทะเบียนคอร์ส "${courseName}" สำเร็จ! +120 EXP`);
+        }
+
+        // --- Stock Price Alert System ---
+        function addStockAlert() {
+            const stockName = document.getElementById('alert-stock-name').value;
+            const targetPrice = parseFloat(document.getElementById('alert-target-price').value);
+
+            if (!targetPrice || targetPrice <= 0) {
+                showToast("กรุณาระบุราคาเป้าหมายให้ถูกต้อง!");
+                return;
+            }
+
+            userStockAlerts.push({ stock: stockName, target: targetPrice });
+            renderStockAlerts();
+            showToast(`ตั้งแจ้งเตือนราคาหุ้น ${stockName} ที่ $${targetPrice.toLocaleString()} สำเร็จ!`);
+        }
+
+        function renderStockAlerts() {
+            const container = document.getElementById('active-alerts-container');
+            if (!container) return;
+
+            if (userStockAlerts.length === 0) {
+                container.innerHTML = `<div class="text-[10px] text-slate-500 text-center py-1">ยังไม่มีการตั้งค่าแจ้งเตือน</div>`;
+                return;
+            }
+
+            let html = '';
+            userStockAlerts.forEach((alert, idx) => {
+                html += `
+                    <div class="bg-navy-900/90 px-2.5 py-1.5 rounded-lg border border-slate-800 flex justify-between items-center text-xs">
+                        <span class="text-slate-300 font-medium"><i class="fa-solid fa-circle text-emerald-400 text-[8px] mr-1"></i> ${alert.stock} (เป้า: $${alert.target.toLocaleString()})</span>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[9px] text-gold-400 bg-gold-500/10 px-1.5 py-0.5 rounded border border-gold-500/30">เปิดใช้งาน</span>
+                            <button onclick="removeStockAlert(${idx})" class="text-slate-500 hover:text-rose-400 text-[10px]"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function removeStockAlert(index) {
+            userStockAlerts.splice(index, 1);
+            renderStockAlerts();
+            showToast("ลบการแจ้งเตือนราคาหุ้นเรียบร้อย");
+        }
+
+        // BOT Game Simulator
+        function nextBotStep(stepNum) {
+            document.querySelectorAll('.bot-step-panel').forEach(panel => panel.classList.add('hidden'));
+            document.getElementById(`bot-step-${stepNum}`).classList.remove('hidden');
+
+            if (stepNum >= 2) setPillarChecked('pillar-check-1', true);
+            if (stepNum >= 3) setPillarChecked('pillar-check-2', true);
+            if (stepNum >= 5) setPillarChecked('pillar-check-3', true);
+            if (stepNum >= 4) {
+                setPillarChecked('pillar-check-4', true);
+                // Reset card UI when entering step 4
+                document.getElementById('revealed-card-result').classList.add('hidden');
+                document.getElementById('btn-draw-card').classList.remove('hidden');
+                document.getElementById('btn-next-step-5').classList.add('hidden');
+            }
+        }
+
+        function setPillarChecked(id, isDone) {
+            const el = document.getElementById(id);
+            if (isDone) {
+                el.className = "fa-solid fa-circle-check text-emerald-400 text-xs";
+            }
+        }
+
+        function selectCareer(careerTitle, salary) {
+            botState.career = careerTitle;
+            botState.salary = salary;
+            const tax = salary * 0.1;
+            const net = salary - tax;
+
+            document.getElementById('stub-base').innerText = `${salary.toLocaleString()} บาท`;
+            document.getElementById('stub-tax').innerText = `-${tax.toLocaleString()} บาท`;
+            document.getElementById('stub-net').innerText = `${net.toLocaleString()} บาท`;
+            showToast(`เลือกอาชีพ ${careerTitle} สำเร็จ!`);
+        }
+
+        function selectInsurance(planName, cost) {
+            botState.insuranceName = planName;
+            botState.insuranceCost = cost;
+            document.getElementById('ins-name-display').innerText = `${planName} (${cost.toLocaleString()} บาท)`;
+            showToast(`ซื้อประกัน ${planName} เรียบร้อย!`);
+        }
+
+        function updateBotAlloc(val) {
+            botState.allocHigh = parseInt(val);
+            botState.allocLow = 100 - parseInt(val);
+            document.getElementById('alloc-low-val').innerText = `${botState.allocLow}%`;
+            document.getElementById('alloc-high-val').innerText = `${botState.allocHigh}%`;
+        }
+
+        // 3D Card Shuffling and Drawing Animation
+        function startCardShuffleAnimation() {
+            const btnDraw = document.getElementById('btn-draw-card');
+            btnDraw.disabled = true;
+            btnDraw.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> กำลังสับสำรับไพ่...`;
+
+            const cards = document.querySelectorAll('.shuffling-card');
+            
+            // Add rapid shuffle animation classes
+            cards.forEach((card, idx) => {
+                card.style.transition = "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)";
+                if (idx === 0) card.style.transform = "translateX(40px) rotate(15deg) scale(0.9)";
+                if (idx === 1) card.style.transform = "translateX(-40px) rotate(-15deg) scale(0.9)";
+                if (idx === 2) card.style.transform = "translateX(0px) rotate(0deg) scale(1.05)";
+            });
+
+            setTimeout(() => {
+                cards.forEach((card, idx) => {
+                    if (idx === 0) card.style.transform = "translateX(-40px) rotate(-10deg) scale(0.9)";
+                    if (idx === 1) card.style.transform = "translateX(40px) rotate(10deg) scale(0.9)";
+                    if (idx === 2) card.style.transform = "translateY(-15px) scale(1.1) rotate(0deg)";
+                });
+            }, 400);
+
+            setTimeout(() => {
+                // Hide shuffling cards and display drawn event result card
+                document.getElementById('card-deck-arena').style.display = 'none';
+                
+                const eventsList = [
+                    {
+                        icon: '<i class="fa-solid fa-car-burst"></i>',
+                        title: "เกิดอุบัติเหตุทางรถยนต์ฉุกเฉิน!",
+                        desc: `ค่ารักษาและซ่อมรถ 15,000 บาท แต่เนื่องจากคุณซื้อ ${botState.insuranceName} ไว้ ประกันจ่ายให้ทั้งหมด รอดพ้นวิกฤต!`
+                    },
+                    {
+                        icon: '<i class="fa-solid fa-chart-line"></i>',
+                        title: "ตลาดหุ้นผันผวนรุนแรง -15%!",
+                        desc: `พอร์ตความเสี่ยงสูง ${botState.allocHigh}% ปรับตัวลดลงชั่วคราว แต่ด้วยเงินสำรองและความคุ้มครอง ทำให้การเงินคุณยังมั่นคง`
+                    },
+                    {
+                        icon: '<i class="fa-solid fa-gift"></i>',
+                        title: "ได้รับโบนัสผลงานพิเศษประจำปี!",
+                        desc: `คุณได้รับเงินปันผลและโบนัสพิเศษเพิ่ม +20,000 บาท นำไปต่อยอดการลงทุนสร้าง Passive Income สำเร็จ!`
+                    }
+                ];
+
+                const randomEv = eventsList[Math.floor(Math.random() * eventsList.length)];
+                document.getElementById('event-icon').innerHTML = randomEv.icon;
+                document.getElementById('event-title').innerText = randomEv.title;
+                document.getElementById('event-desc').innerText = randomEv.desc;
+
+                document.getElementById('revealed-card-result').classList.remove('hidden');
+                btnDraw.style.display = 'none';
+                document.getElementById('btn-next-step-5').classList.remove('hidden');
+
+                addEXP(200);
+                showToast("จั่วการ์ดสำเร็จ! +200 EXP");
+            }, 1000);
+        }
+
+        function resetBotGame() {
+            document.getElementById('card-deck-arena').style.display = 'flex';
+            document.getElementById('revealed-card-result').classList.add('hidden');
+            const btnDraw = document.getElementById('btn-draw-card');
+            btnDraw.style.display = 'block';
+            btnDraw.disabled = false;
+            btnDraw.innerHTML = `<i class="fa-solid fa-dice"></i> สับไพ่และจั่วการ์ดเหตุการณ์พิเศษ`;
+            nextBotStep(1);
+            showToast("เริ่มเกมจำลอง ธปท. ใหม่!");
+        }
+
+        function initDashboardCharts() {
+            const ctxLine = document.getElementById('dashboardLineChart').getContext('2d');
+            dashboardLineChart = new Chart(ctxLine, {
+                type: 'line',
+                data: {
+                    labels: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.'],
+                    datasets: [{
+                        data: [850000, 880000, 910000, 940000, 1000000],
+                        borderColor: '#e5c158',
+                        backgroundColor: 'rgba(229, 193, 88, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 2,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { x: { display: false }, y: { display: false } }
+                }
+            });
+
+            const ctxDonut = document.getElementById('dashboardDonutChart').getContext('2d');
+            dashboardDonutChart = new Chart(ctxDonut, {
+                type: 'doughnut',
+                data: {
+                    labels: ['จำเป็น', 'ฟุ่มเฟือย', 'หนี้เสี่ยง'],
+                    datasets: [{
+                        data: [60, 25, 15],
+                        backgroundColor: ['#34d399', '#facc15', '#f43f5e'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    cutout: '70%'
+                }
+            });
+        }
+
+        function initSimChart() {
+            const ctxSim = document.getElementById('simChart').getContext('2d');
+            simChart = new Chart(ctxSim, {
+                type: 'line',
+                data: {
+                    labels: ['ปี 0', 'ปี 1', 'ปี 2', 'ปี 3', 'ปี 4', 'ปี 5'],
+                    datasets: [{
+                        data: [10000, 10800, 11664, 12597, 13604, 14693],
+                        borderColor: '#38bdf8',
+                        backgroundColor: 'rgba(56, 189, 248, 0.15)',
+                        fill: true,
+                        tension: 0.3,
+                        borderWidth: 2,
+                        pointRadius: 2,
+                        pointBackgroundColor: '#38bdf8'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { grid: { display: false }, ticks: { color: '#64748b', font: { size: 9 } } },
+                        y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b', font: { size: 9 } } }
+                    }
+                }
+            });
+        }
+
+        function updateSimulation() {
+            const capital = parseInt(document.getElementById('input-capital').value);
+            const riskLevel = parseInt(document.getElementById('input-risk').value);
+            const years = parseInt(document.getElementById('input-years').value);
+
+            let rate = 0.05;
+            let riskLabel = "ต่ำ (5%/ปี)";
+            if (riskLevel === 2) { rate = 0.08; riskLabel = "ปานกลาง (8%/ปี)"; }
+            if (riskLevel === 3) { rate = 0.15; riskLabel = "สูง (15%/ปี)"; }
+
+            document.getElementById('val-capital').innerText = `$${capital.toLocaleString()}`;
+            document.getElementById('val-risk').innerText = riskLabel;
+            document.getElementById('val-years').innerText = `${years} ปี`;
+
+            const labels = [];
+            const data = [];
+            for (let i = 0; i <= years; i++) {
+                labels.push(`ปี ${i}`);
+                const projected = Math.round(capital * Math.pow(1 + rate, i));
+                data.push(projected);
+            }
+
+            const finalValue = data[data.length - 1];
+            document.getElementById('sim-projected-total').innerText = `$${finalValue.toLocaleString()}`;
+
+            if (simChart) {
+                simChart.data.labels = labels;
+                simChart.data.datasets[0].data = data;
+                simChart.update();
+            }
+        }
+
+        function checkAnswer(buttonElem, isCorrect) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(opt => {
+                opt.disabled = true;
+                opt.classList.add('opacity-50');
+            });
+
+            if (isCorrect) {
+                buttonElem.classList.remove('opacity-50', 'bg-navy-900/80');
+                buttonElem.classList.add('bg-emerald-500/20', 'border-emerald-500', 'text-emerald-300');
+                document.getElementById('quiz-result').classList.remove('hidden');
+                addEXP(150);
+                showToast("คำตอบถูกต้อง! +150 EXP");
+            } else {
+                buttonElem.classList.remove('opacity-50', 'bg-navy-900/80');
+                buttonElem.classList.add('bg-rose-500/20', 'border-rose-500', 'text-rose-300');
+                showToast("คำตอบยังไม่ถูกต้อง ลองใหม่อีกครั้ง!");
+            }
+        }
+
+        function claimQuest(id, expReward, moneyReward) {
+            const btn = document.getElementById(`quest-btn-${id}`);
+            btn.disabled = true;
+            btn.innerText = "สำเร็จแล้ว";
+            btn.className = "px-2.5 py-1 rounded-lg bg-slate-800 text-slate-500 text-[11px] cursor-not-allowed";
+            addEXP(expReward);
+            showToast(`รับรางวัล +${expReward} EXP!`);
+        }
+
+        function tradeStock(stockName, price) {
+            addEXP(80);
+            showToast(`ซื้อ ${stockName} สำเร็จ! เพิ่มในระบบติดตามราคาแล้ว`);
+            // Auto add an alert for bought stock
+            userStockAlerts.push({ stock: stockName, target: Math.round(price * 1.15) });
+            renderStockAlerts();
+        }
+
+        function connectPartner(partnerName) {
+            if (!isKycVerified) {
+                showToast("กรุณายยืนยันตัวตน (KYC / NDID) ก่อนเปิดพอร์ตจริงกับพันธมิตร");
+                openKycModal();
+                return;
+            }
+            showToast(`เชื่อมต่อพอร์ตกับ ${partnerName} สำเร็จผ่านระบบ NDID!`);
+        }
+
+        function addEXP(amount) {
+            currentEXP += amount;
+            document.getElementById('user-exp').innerText = `EXP: ${currentEXP.toLocaleString()}`;
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = message;
+            toast.classList.remove('-translate-y-12', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('-translate-y-12', 'opacity-0');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
